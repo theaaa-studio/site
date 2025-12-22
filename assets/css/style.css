@@ -1,0 +1,1224 @@
+:root {
+    --bg: #f7f8fb;
+    --bg-2: #ffffff;
+    --text: #0f172a;
+    --muted: #55627a;
+    --brand: #6d28d9;
+    --brand-2: #0891b2;
+    --card: #ffffff;
+    --stroke: rgba(15, 23, 42, 0.12);
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+    --max: 1120px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    scroll-behavior: smooth;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
+        sans-serif;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.container {
+    width: min(var(--max), 100%);
+    margin-inline: auto;
+}
+
+/* Decorative gradients inspired by aifiesta */
+.glow {
+    position: absolute;
+    inset: auto auto auto 50%;
+    translate: -50% 0;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(50px);
+    opacity: 0.5;
+}
+
+.glow div {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(50px);
+}
+
+.g1 {
+    width: 560px;
+    height: 560px;
+    background: radial-gradient(closest-side,
+            rgba(34, 211, 238, 0.35),
+            transparent 70%);
+}
+
+.g2 {
+    width: 520px;
+    height: 520px;
+    left: -160px;
+    top: 140px;
+    background: radial-gradient(closest-side,
+            rgba(139, 92, 246, 0.35),
+            transparent 70%);
+}
+
+/* NAV */
+header {
+    position: sticky;
+    top: 0;
+    backdrop-filter: saturate(1.2) blur(10px);
+    background: rgba(11, 15, 26, 0.6);
+    z-index: 50;
+    border-bottom: 1px solid var(--stroke);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 0;
+}
+
+.brand {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.brand .dot {
+    color: var(--brand);
+}
+
+nav {
+    margin-left: auto;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+nav a:hover {
+    border-color: var(--stroke);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* HERO */
+/* HERO */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    align-items: center;
+    padding: 48px 0;
+}
+
+h1 {
+    font-size: clamp(36px, 6vw, 60px);
+    line-height: 1.05;
+    margin: 0 0 12px;
+}
+
+.eyebrow {
+    color: var(--brand-2);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.84rem;
+}
+
+.sub {
+    color: var(--muted);
+}
+
+.hero-card {
+    position: relative;
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.03));
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.pill {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid var(--stroke);
+    border-radius: 999px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+/* Hero image placeholder styles */
+.hero-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hero-image-placeholder {
+    width: 160px;
+    height: 160px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    background: linear-gradient(135deg,
+            rgba(109, 40, 217, 0.1) 0%,
+            rgba(8, 145, 178, 0.1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: var(--brand);
+    box-shadow: 0 12px 32px rgba(2, 6, 23, 0.15),
+        inset 0 1px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-image-placeholder:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(2, 6, 23, 0.25),
+        inset 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* When a real hero image is added */
+.hero-image img {
+    width: 160px;
+    height: 160px;
+    border-radius: 24px;
+    object-fit: cover;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 12px 32px rgba(2, 6, 23, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-image img:hover {
+    transform: translateY(-px) scale(1.02);
+    box-shadow: 0 20px 20px rgba(2, 6, 23, 0.25);
+}
+
+/* Motto styling */
+.motto {
+    font-weight: 800;
+    font-size: clamp(22px, 3.5vw, 28px);
+    letter-spacing: 0.02em;
+}
+
+.motto-sub {
+    color: var(--muted);
+    opacity: 0.9;
+}
+
+/* Pill hover behavior */
+.pill {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pill.glass {
+    box-shadow: none;
+    background: #ffffff;
+}
+
+.pill:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.12);
+}
+
+@media (max-width: 900px) {
+    .hero-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* SECTIONS */
+section {
+    position: relative;
+    padding: 36px 0;
+    border-top: 1px solid rgba(2, 6, 23, 0.06);
+}
+
+section:first-of-type {
+    border-top: none;
+}
+
+.section-title {
+    font-size: clamp(26px, 3.5vw, 36px);
+    margin: 0 0 18px;
+}
+
+.grid {
+    display: grid;
+    gap: 18px;
+}
+
+/* ABOUT & INFO */
+.cards {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.list {
+    padding-left: 1.1rem;
+    margin: 10px 0;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+/* ACCORDION (FAQ-like for Experience & Education) */
+.acc {
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.acc-item+.acc-item {
+    border-top: 1px solid var(--stroke);
+}
+
+.acc-btn {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: var(--text);
+    padding: 18px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.acc-btn .tag {
+    color: var(--brand-2);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.acc-btn:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.acc-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.acc-panel>div {
+    padding: 0 18px 18px;
+}
+
+.chev {
+    transition: transform 0.35s ease;
+}
+
+.acc-item.open .acc-panel {
+    max-height: 600px;
+}
+
+.acc-item.open .chev {
+    transform: rotate(180deg);
+}
+
+/* TOOLS grid */
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tool-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid var(--stroke);
+}
+
+/* Ensure My Games cards match Tools size without adding new content */
+#games .tool-card {
+    position: relative;
+}
+
+#games .tool-card::before {
+    content: "";
+    display: block;
+    height: 0px;
+    width: 100%;
+    border-radius: 14px;
+    border: 0px solid var(--stroke);
+    background: linear-gradient(180deg,
+            rgba(2, 6, 23, 0.05),
+            rgba(2, 6, 23, 0.02));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.6rem;
+    transition: transform 0.25s ease;
+}
+
+#games .tool-card:hover::before {
+    transform: translateY(-3px);
+}
+
+.tool-title {
+    font-weight: 700;
+    margin: 0.6rem 0 0.25rem;
+}
+
+.btn-ghost {
+    align-self: center;
+    border: 1px solid var(--stroke);
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: var(--muted);
+    display: inline-block;
+}
+
+.acc-btn a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.acc-btn a:hover {
+    opacity: 0.85;
+}
+
+/* FOOTER */
+footer {
+    padding: 46px 0;
+    color: var(--muted);
+    text-align: center;
+    border-top: 1px solid var(--stroke);
+}
+
+.backtop {
+    display: inline-block;
+    margin-top: 18px;
+    border: 1px solid var(--stroke);
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.backtop:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(2, 6, 23, 0.16);
+}
+
+@media (max-width: 900px) {
+    .hero-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Bottom segmented nav (pill) */
+header {
+    display: none;
+}
+
+/* replaced by bottom nav */
+body {
+    padding-bottom: 110px;
+}
+
+.bottom-nav {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: max(20px, env(safe-area-inset-bottom));
+    z-index: 99;
+}
+
+.bottom-nav .seg {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    padding: 12px 22px;
+    background: rgba(17, 17, 17, 0.9);
+    border: 1px solid var(--stroke);
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+}
+
+.bottom-nav a {
+    color: var(--muted);
+    font-weight: 600;
+    padding: 8px 6px;
+    border-radius: 8px;
+}
+
+.bottom-nav a:hover {
+    color: var(--text);
+}
+
+.bottom-nav a.active {
+    color: var(--text);
+    font-weight: 800;
+}
+
+@media (max-width: 560px) {
+    .bottom-nav .seg {
+        gap: 14px;
+        padding: 10px 16px;
+    }
+}
+
+/* iOS glass (frosted with a little roughness) */
+body {
+    background: var(--bg);
+}
+
+body::before {
+    content: none;
+}
+
+.glass {
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(255, 255, 255, 0.9));
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+}
+
+.card {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.hero-card {
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.pill {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+section {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bottom-nav .seg {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.bottom-nav a {
+    transition: background 0.2s ease;
+}
+
+.bottom-nav a.active {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Boxy style overrides */
+:root {
+    --radius: 16px;
+}
+
+.glass {
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.04),
+            rgba(255, 255, 255, 0.025));
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card,
+.hero-card,
+.acc,
+section .container {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    padding: 28px;
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06),
+        inset 0 1px rgba(255, 255, 255, 0.8);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    will-change: transform;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.card,
+.hero-card,
+.acc {
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    will-change: transform;
+}
+
+.card:hover,
+.hero-card:hover,
+.acc:hover,
+section .container:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+}
+
+.tool-card img {
+    transition: transform 0.25s ease;
+}
+
+.tool-card:hover img {
+    transform: translateY(-3px);
+}
+
+.btn-ghost {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-ghost:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
+}
+
+/* Motto styling */
+.motto {
+    font-weight: 800;
+    font-size: clamp(22px, 3.5vw, 28px);
+    letter-spacing: 0.02em;
+}
+
+.motto-sub {
+    color: var(--muted);
+    opacity: 0.9;
+}
+
+/* Pill hover behavior */
+.pill {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pill.glass {
+    box-shadow: none;
+    background: #ffffff;
+}
+
+.pill:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.12);
+}
+
+/* solid background override */
+.glow {
+    display: none !important;
+}
+
+/* Social icons (boxed buttons with masked SVG inside) */
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.icon-btn {
+    position: relative;
+    /* needed for absolute-centering the pseudo */
+    display: inline-grid;
+    place-items: center;
+    /* keeps fallback centering for content */
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--stroke);
+    border-radius: 10px;
+    background: #fff;
+    /* small white box behind icon */
+    color: var(--text);
+    /* icon color comes from this */
+
+    transition: transform 0.18s ease, box-shadow 0.18s ease,
+        background 0.18s ease;
+    padding: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.icon-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(2, 6, 23, 0.16);
+    background: #fff;
+}
+
+/* absolute-center the masked icon so it's perfectly centered both axes */
+.icon-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    transform: translate(-50%, -50%);
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    display: block;
+}
+
+/* icons: apply the SVG mask to the ::after element */
+.icon-btn[data-ic="github"]::after {
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.4c0 5.26 3.4 9.72 8.13 11.3.6.12.82-.27.82-.59v-2.2c-3.3.74-4-1.4-4-1.4-.55-1.4-1.34-1.77-1.34-1.77-1.1-.78.08-.76.08-.76 1.2.08 1.83 1.25 1.83 1.25 1.08 1.87 2.83 1.33 3.52 1.02.11-.8.42-1.34.77-1.65-2.64-.31-5.42-1.36-5.42-6.08 0-1.34.47-2.44 1.25-3.3-.12-.3-.54-1.56.12-3.24 0 0 1.02-.33 3.35 1.26a11.5 11.5 0 0 1 6.1 0c2.33-1.59 3.35-1.26 3.35-1.26.66 1.68.24 2.94.12 3.24.78.86 1.25 1.96 1.25 3.3 0 4.73-2.78 5.76-5.43 6.07.43.37.81 1.1.81 2.22v3.3c0 .32.21.71.83.59A11.5 11.5 0 0 0 23.5 12.4 11.5 11.5 0 0 0 12 .5Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.4c0 5.26 3.4 9.72 8.13 11.3.6.12.82-.27.82-.59v-2.2c-3.3.74-4-1.4-4-1.4-.55-1.4-1.34-1.77-1.34-1.77-1.1-.78.08-.76.08-.76 1.2.08 1.83 1.25 1.83 1.25 1.08 1.87 2.83 1.33 3.52 1.02.11-.8.42-1.34.77-1.65-2.64-.31-5.42-1.36-5.42-6.08 0-1.34.47-2.44 1.25-3.3-.12-.3-.54-1.56.12-3.24 0 0 1.02-.33 3.35 1.26a11.5 11.5 0 0 1 6.1 0c2.33-1.59 3.35-1.26 3.35-1.26.66 1.68.24 2.94.12 3.24.78.86 1.25 1.96 1.25 3.3 0 4.73-2.78 5.76-5.43 6.07.43.37.81 1.1.81 2.22v3.3c0 .32.21.71.83.59A11.5 11.5 0 0 0 23.5 12.4 11.5 11.5 0 0 0 12 .5Z"/></svg>');
+}
+
+.icon-btn[data-ic="globe"]::after {
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.5 9h-3.09A8.03 8.03 0 0 0 16 5.43 8.02 8.02 0 0 1 19.5 11Zm-5.41 0H9.91a10.3 10.3 0 0 1 0-3h4.18a10.3 10.3 0 0 1 0 3ZM8 5.43A8.03 8.03 0 0 0 7.59 11H4.5A8.02 8.02 0 0 1 8 5.43ZM4.5 13h3.09A8.03 8.03 0 0 0 8 18.57 8.02 8.02 0 0 1 4.5 13Zm5.41 0h4.18a10.3 10.3 0 0 1 0 3H9.91a10.3 10.3 0 0 1 0-3ZM16 18.57A8.03 8.03 0 0 0 16.41 13h3.09A8.02 8.02 0 0 1 16 18.57Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.5 9h-3.09A8.03 8.03 0 0 0 16 5.43 8.02 8.02 0 0 1 19.5 11Zm-5.41 0H9.91a10.3 10.3 0 0 1 0-3h4.18a10.3 10.3 0 0 1 0 3ZM8 5.43A8.03 8.03 0 0 0 7.59 11H4.5A8.02 8.02 0 0 1 8 5.43ZM4.5 13h3.09A8.03 8.03 0 0 0 8 18.57 8.02 8.02 0 0 1 4.5 13Zm5.41 0h4.18a10.3 10.3 0 0 1 0 3H9.91a10.3 10.3 0 0 1 0-3ZM16 18.57A8.03 8.03 0 0 0 16.41 13h3.09A8.02 8.02 0 0 1 16 18.57Z"/></svg>');
+}
+
+.icon-btn[data-ic="mail"]::after {
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8.06 8.47 8.27-6.1A1 1 0 0 0 20.9 6H3.1a1 1 0 0 0-.43 1.37l8.27 6.1a2 2 0 0 0 2.12 0Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8.06 8.47 8.27-6.1A1 1 0 0 0 20.9 6H3.1a1 1 0 0 0-.43 1.37l8.27 6.1a2 2 0 0 0 2.12 0Z"/></svg>');
+}
+
+.icon-btn[data-ic="facebook"]::after {
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12.07C22 6.48 17.52 2 11.93 2 6.48 2 2 6.48 2 12.07c0 5.01 3.66 9.16 8.44 9.93v-7.02H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34v7.02C18.34 21.23 22 17.08 22 12.07Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12.07C22 6.48 17.52 2 11.93 2 6.48 2 2 6.48 2 12.07c0 5.01 3.66 9.16 8.44 9.93v-7.02H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34v7.02C18.34 21.23 22 17.08 22 12.07Z"/></svg>');
+}
+
+.icon-btn[data-ic="x"]::after {
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h3l5.2 6.2L16.4 3H20l-7 8.5L20.5 21H17l-5.5-6.8L6 21H3.5L11 12.5 3 3Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h3l5.2 6.2L16.4 3H20l-7 8.5L20.5 21H17l-5.5-6.8L6 21H3.5L11 12.5 3 3Z"/></svg>');
+}
+
+.icon-btn[data-ic="youtube"]::after {
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm7 3 6 4-6 4V9Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm7 3 6 4-6 4V9Z"/></svg>');
+}
+
+.icon-btn[data-ic="linkedin"]::after {
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3.5 9h3v12h-3V9Zm7 0h2.9v1.7h.04c.4-.8 1.38-1.7 2.85-1.7 3.04 0 3.6 2 3.6 4.6V21h-3v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-2.9V9Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3.5 9h3v12h-3V9Zm7 0h2.9v1.7h.04c.4-.8 1.38-1.7 2.85-1.7 3.04 0 3.6 2 3.6 4.6V21h-3v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-2.9V9Z"/></svg>');
+}
+
+.icon-btn[data-ic="instagram"]::after {
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm5 4.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm6-1.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm5 4.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm6-1.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>');
+}
+
+/* About layout two-column */
+.about-grid {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Clean data presentation for Personal Info & Technology */
+.kv {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.kv .row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid var(--stroke);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(2, 6, 23, 0.04);
+}
+
+.kv .label {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.kv .value {
+    font-weight: 600;
+}
+
+@media (max-width: 520px) {
+    .kv .row {
+        grid-template-columns: 120px 1fr;
+    }
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--stroke);
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--text);
+    box-shadow: 0 4px 10px rgba(2, 6, 23, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(2, 6, 23, 0.12);
+}
+
+/* Extra Curricular layout: Achievements + Talks side-by-side, Other Activities full width */
+#extra .cards {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+}
+
+#extra .cards article:last-child {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 780px) {
+    #extra .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------------------------------
+             Goal: Add vertical space BELOW the top bar/header (not between
+                   background boxes). This pushes the FIRST content section
+                   down so it clears a fixed/sticky navbar.
+             How:  Paste at the end of your CSS and tweak --topbar-space.
+          -------------------------------------------------------------- */
+
+:root {
+    /* Space between the top bar and the first content block */
+    --topbar-space: 72px;
+    /* adjust to your header height */
+}
+
+@media (max-width: 768px) {
+    :root {
+        --topbar-space: 56px;
+    }
+}
+
+/* 1) Common patterns: fixed/sticky header followed by <main> */
+header.fixed+main,
+header.sticky+main,
+header.is-fixed+main,
+.navbar.fixed-top+main,
+.navbar.navbar-fixed-top+main,
+#topbar+main {
+    margin-top: var(--topbar-space);
+}
+
+/* 2) If your layout starts with a <section> instead of <main> */
+header.fixed+section:first-of-type,
+header.sticky+section:first-of-type,
+header.is-fixed+section:first-of-type,
+.navbar.fixed-top+section:first-of-type,
+.navbar.navbar-fixed-top+section:first-of-type,
+#topbar+section:first-of-type,
+#header+section:first-of-type,
+.site-header+section:first-of-type {
+    margin-top: var(--topbar-space);
+}
+
+/* 3) Wrapper-based layouts (main content wrapped in a container) */
+header.fixed+.content,
+header.sticky+.content,
+.navbar.fixed-top+.content,
+#topbar+.content,
+.site-header+.content-wrapper,
+.site-header+.wrapper {
+    padding-top: var(--topbar-space);
+}
+
+/* 4) Smooth anchor jumps: avoid anchors hiding under the top bar */
+html {
+    scroll-padding-top: var(--topbar-space);
+}
+
+[id] {
+    scroll-margin-top: var(--topbar-space);
+}
+
+/* 5) Utility class you can drop after the header if you prefer */
+.topbar-spacer {
+    height: var(--topbar-space);
+}
+
+/* set the component scale once */
+.profile-photo {
+    --s: 0.9;
+    /* 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: calc(12px * var(--s));
+    width: 100%;
+}
+
+.photo-placeholder {
+    width: calc(256px * var(--s));
+    height: calc(256px * var(--s));
+    border: calc(3px * var(--s)) solid var(--stroke);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    display: flex;
+    /* fine to keep flex */
+    align-items: flex-start;
+    /* top align if you like */
+    justify-content: center;
+    font-size: calc(36px * var(--s));
+    color: var(--muted);
+    box-shadow: 0 calc(8px * var(--s)) calc(20px * var(--s)) rgba(2, 6, 23, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+/* KEY PART: make the image follow the container size and stay centered */
+.photo-placeholder>img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    /* fills the circle and preserves aspect */
+    object-position: center center;
+    /* center image inside the circle */
+}
+
+.photo-placeholder:hover {
+    transform: translateY(calc(-3px * var(--s)));
+    box-shadow: 0 calc(15px * var(--s)) calc(35px * var(--s)) rgba(2, 6, 23, 0.18);
+}
+
+/* Personal Info → Social row inside kv box */
+/* --- Hover pop for Personal Info rows --- */
+.kv .row {
+    border: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: var(--surface, rgba(0, 0, 0, 0.02));
+    transition: transform 0.18s ease, box-shadow 0.18s ease,
+        background-color 0.18s ease, border-color 0.18s ease;
+    will-change: transform;
+}
+
+/* Pop on hover/focus like other cards */
+.kv .row:hover,
+.kv .row:focus-within {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    background: var(--surface-hover, rgba(0, 0, 0, 0.04));
+    border-color: var(--accent, rgba(0, 0, 0, 0.18));
+}
+
+/* Keep label aligned when the row pops */
+.kv .row .label {
+    font-weight: 600;
+}
+
+/* Social row: no visible label, full-width centered icons */
+.kv .row.no-label .label {
+    display: none;
+}
+
+.kv .row.no-label .value {
+    grid-column: 1 / -1;
+    width: 100%;
+    text-align: center;
+}
+
+/* Center icons horizontally and allow wrapping */
+.kv .row.no-label .value .social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+}
+
+/* --- My Experience: two-column layout --- */
+.experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: start;
+}
+
+.experience-grid .col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.experience-grid .col>.muted {
+    margin-top: 0;
+}
+
+/* Stack on mobile */
+@media (max-width: 900px) {
+    .experience-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Game cards: icon badge */
+.tool-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-card .ico {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.tool-card .ico svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+}
+
+/* optional color themes */
+.tool-card .ico.blue {
+    background: linear-gradient(135deg, #5b9dff, #4f46e5);
+}
+
+.tool-card .ico.gold {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+
+/* tidy spacings */
+.tool-card .tool-title {
+    margin-top: 0;
+}
+
+.tool-card .muted {
+    margin-top: 2px;
+}
+
+/* ===== Simple Game Card (tool-like) ===== */
+.game-card--simple {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--stroke);
+}
+
+/* square icon/cover like a tool item but a bit bigger */
+.game-card--simple .gc-media {
+    width: 56px;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(135deg,
+            rgba(109, 40, 217, 0.12),
+            rgba(8, 145, 178, 0.1));
+    display: grid;
+    place-items: center;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.game-card--simple .gc-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.game-card--simple .gc-fallback svg {
+    width: 28px;
+    height: 28px;
+    opacity: 0.9;
+    fill: currentColor;
+}
+
+/* title + sub like tool items */
+.game-card--simple .gc-main {
+    min-width: 0;
+}
+
+.game-card--simple .gc-title {
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin: 0 0 2px 0;
+}
+
+.game-card--simple .gc-sub {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* optional tags row (keeps your existing .chip) */
+.game-card--simple .gc-tags {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.game-card--simple .gc-tags .chip {
+    padding: 4px 8px;
+}
+
+/* tiny CTA aligned right (not in tool items = slight difference) */
+.game-card--simple .gc-cta {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--stroke);
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    transform: translateZ(0);
+}
+
+.game-card--simple .gc-cta:hover {
+    transform: translateX(1px);
+}
+
+/* hover: subtle lift, like tools but toned down */
+.game-card--simple:hover {
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.1);
+}
+
+/* small screens: let tags wrap underneath nicely */
+@media (max-width: 520px) {
+    .game-card--simple {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .game-card--simple .gc-cta {
+        grid-column: 2;
+        justify-self: end;
+    }
+}
+
+/* primary button that matches your palette */
+.btn-primary {
+    border: 1px solid var(--stroke);
+    background: linear-gradient(135deg,
+            rgba(109, 40, 217, 0.18),
+            rgba(8, 145, 178, 0.18));
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(2, 6, 23, 0.18);
+}
+
+.btn-primary svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* make existing chips a tad tighter in game card context */
+.game-card .chip {
+    padding: 5px 9px;
+}
+
+/* responsive tweak */
+@media (max-width: 520px) {
+    .game-card .gc-actions {
+        flex-wrap: wrap;
+    }
+}
+
+/* Square logos in Team (Games) section */
+#games .tool-card .tool-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    /* soft square */
+    overflow: hidden;
+    /* crop to square */
+}
+
+#games .tool-card .tool-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* fill without distortion */
+    display: block;
+}
+
+/* make all other-activity cards use normal width */
+#extra .cards article:last-child {
+    grid-column: auto;
+}
+
+/* Add these styles for tool card buttons */
+.tool-card .btn-ghost {
+    text-align: center;
+    display: block;
+    width: 100%;
+}

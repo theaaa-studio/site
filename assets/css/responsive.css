@@ -1,0 +1,414 @@
+/* Mobile / responsive tweaks */
+
+:root {
+    --container-padding: 20px;
+    --max-width: 1100px;
+}
+
+html,
+body {
+    box-sizing: border-box
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+}
+
+/* Make images scale */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block
+}
+
+/* Make tool cards and grids wrap cleanly */
+.grid {
+    gap: 16px;
+}
+
+/* Hero: allow stacking */
+.hero-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* hero card image sizing */
+.hero-image img {
+    width: 160px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Profile photo */
+.profile-photo .photo-placeholder img {
+    width: 256px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Tool cards - ensure images fit */
+.tool-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Key-value rows */
+.kv .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Social icons spacing */
+.social .icon-btn {
+    display: inline-block;
+    margin: 4px;
+    width: 36px;
+    height: 36px;
+}
+
+/* Accordion panels full width on small screens */
+.acc-panel {
+    width: 100%;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 900px) {
+
+    /* Stack about columns */
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack hero content */
+    .hero-wrap {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 520px;
+    }
+
+    /* Experience grid -> single column */
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Tools & cards: use single column flow or auto-fit */
+    .grid.cards {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    /* Tool cards stack */
+    .tool-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        align-items: start;
+    }
+
+    /* Reduce hero/profile image */
+    .hero-image img,
+    .profile-photo .photo-placeholder img {
+        width: 128px;
+    }
+
+    /* KV rows stack vertically for narrow devices */
+    .kv .row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    /* make the profile photo larger, centered and sit above the info */
+    .about-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-right .profile-photo {
+        --s: 1;
+        /* use full size in the stacked column */
+        max-width: 240px;
+        width: 100%;
+        margin: 0 0 16px;
+        order: -1;
+        /* place photo before the card content inside about-right */
+        justify-content: center;
+    }
+
+    .about-right .photo-placeholder {
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        border-width: 3px;
+        overflow: hidden;
+    }
+
+    .about-right .photo-placeholder>img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    /* Ensure profile photo is horizontally centered in all layouts */
+    .about-right .profile-photo {
+        display: flex;
+        justify-content: center;
+        /* center content horizontally */
+        align-items: center;
+        /* center content vertically if needed */
+        margin-inline: auto;
+        /* center the whole block */
+        text-align: center;
+    }
+
+    /* Make the placeholder itself center as a block */
+    .about-right .photo-placeholder {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* keep the image centered and filling its container */
+    .about-right .photo-placeholder>img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+/* MOBILE: reorder about columns and collapse long article content with Read more */
+@media (max-width: 900px) {
+
+    /* switch the about layout to a stacked flex flow so we can reorder children */
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ensure personal info/sidebar appears first */
+    .about-right {
+        order: -1;
+        /* keep it centered as before */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Make common education/accordion containers come next if present */
+    .about-grid .education,
+    .about-grid #education,
+    .about-grid .acc,
+    .about-grid .education-panel {
+        order: 0;
+    }
+
+    /* Put the main article/content last */
+    .about-grid .about-article,
+    .about-grid article,
+    .about-grid .main-article {
+        order: 1;
+    }
+
+    /* COLLAPSE LONG ARTICLE (mobile only) */
+    .about-article,
+    .about-article .article-body,
+    .about-grid article,
+    .main-article {
+        position: relative;
+    }
+
+    /* collapsed state — adjust max-height to taste */
+    .about-article.collapsed,
+    .about-grid article.collapsed,
+    .main-article.collapsed {
+        max-height: 180px;
+        overflow: hidden;
+    }
+
+    /* subtle fade at bottom to hint more content */
+    .about-article.collapsed::after,
+    .about-grid article.collapsed::after,
+    .main-article.collapsed::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 64px;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(247, 248, 251, 0.95) 60%, rgba(247, 248, 251, 1) 100%);
+    }
+
+    /* Read more button styling */
+    .read-more-btn {
+        display: inline-block;
+        margin-top: 10px;
+        background: var(--brand, #6d28d9);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+        border: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .about-article .read-more-wrap,
+    .about-grid article .read-more-wrap,
+    .main-article .read-more-wrap {
+        display: flex;
+        justify-content: center;
+        padding-top: 8px;
+    }
+
+    /* expanded state removes height restriction and fade */
+    .about-article.expanded,
+    .about-grid article.expanded,
+    .main-article.expanded {
+        max-height: none;
+    }
+}
+
+@media (max-width: 500px) {
+
+    /* Tighter padding on very small screens */
+    :root {
+        --container-padding: 12px;
+    }
+
+    /* Slightly smaller images & fonts */
+    .hero-image img,
+    .profile-photo .photo-placeholder img {
+        width: 96px;
+    }
+
+    body {
+        font-size: 15px;
+    }
+}
+
+/* Bottom Nav Mobile Fixes */
+.bottom-nav {
+    width: 95%;
+    /* Give some margin on sides */
+    max-width: 600px;
+    /* Limit maximum width */
+}
+
+.bottom-nav .seg {
+    width: 100%;
+    padding: 10px 15px;
+    justify-content: space-between;
+    /* Spread items evenly */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+    overflow-x: auto;
+    /* Allow horizontal scroll if needed */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scroll on iOS */
+}
+
+/* Make nav items smaller on mobile */
+.bottom-nav a {
+    font-size: 14px;
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    padding: 6px 8px;
+}
+
+/* Hide scrollbar but keep functionality */
+.bottom-nav .seg::-webkit-scrollbar {
+    display: none;
+}
+
+.bottom-nav .seg {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Bottom Nav with Icons */
+.bottom-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 600px;
+    z-index: 100;
+}
+
+.bottom-nav .seg {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px;
+    gap: 8px;
+}
+
+.bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    padding: 8px 12px;
+    flex: 1;
+    min-width: 60px;
+    text-align: center;
+}
+
+.bottom-nav a i {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+/* Mobile styles - hide text, show only icons */
+@media (max-width: 480px) {
+    .bottom-nav {
+        width: 98%;
+        bottom: 10px;
+    }
+
+    .bottom-nav .seg {
+        padding: 8px;
+    }
+
+    .bottom-nav a {
+        padding: 8px;
+        min-width: 40px;
+    }
+
+    .bottom-nav a span {
+        display: none;
+        /* Hide text on mobile */
+    }
+
+    .bottom-nav a i {
+        font-size: 18px;
+        margin-bottom: 0;
+        /* Remove bottom margin since there's no text */
+    }
+}
