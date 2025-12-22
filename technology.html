@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="icon" type="image/x-icon" href="assets/imgs/theaaa2.ico" />
+    <title>Technology | Abid Al Aqib (The AAA)</title>
+
+    <meta
+      name="description"
+      content="Explore the technologies, engines, and web tools used by Abid Al Aqib (The AAA)."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body id="top">
+    <main>
+      <!-- Technology -->
+      <section id="technology">
+        <div class="container">
+          <h2 class="section-title">Technology</h2>
+          <div class="grid cards">
+            <article class="card glass">
+              <h3 style="margin-top: 0">Engines</h3>
+              <div class="chips">
+                <span class="chip">Unity</span><span class="chip">Unreal</span>
+                <span class="chip">Lens Studio</span>
+                <span class="chip">Effect House</span>
+              </div>
+            </article>
+            <article class="card glass">
+              <h3 style="margin-top: 0">Web 3D</h3>
+              <div class="chips">
+                <span class="chip">Model Viewer</span
+                ><span class="chip">Sketchfab API</span
+                ><span class="chip">Babylon JS</span
+                ><span class="chip">ThreeJS</span>
+              </div>
+            </article>
+            <article class="card glass">
+              <h3 style="margin-top: 0">Web Technologies</h3>
+              <div class="chips">
+                <span class="chip">Node JS (REST API)</span
+                ><span class="chip">React JS (Frontend)</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary">
+      <div class="seg glass" role="tablist">
+        <a href="index.html#home" role="tab">
+          <i class="fas fa-home"></i>
+        </a>
+        <a href="index.html#about" role="tab">
+          <i class="fas fa-user"></i>
+        </a>
+        <a href="index.html#technology" role="tab">
+          <i class="fas fa-microchip"></i>
+        </a>
+        <a href="index.html#experience" role="tab">
+          <i class="fas fa-briefcase"></i>
+        </a>
+        <a href="index.html#games" role="tab">
+          <i class="fas fa-gamepad"></i>
+        </a>
+        <a href="index.html#tools" role="tab">
+          <i class="fas fa-tools"></i>
+        </a>
+        <a href="index.html#extra" role="tab">
+          <i class="fas fa-plus-circle"></i>
+        </a>
+      </div>
+    </nav>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll(".bottom-nav a"));
+        const path = window.location.pathname;
+        const page = path.split("/").pop() || "index.html";
+        
+        links.forEach((a) => {
+          const href = a.getAttribute("href");
+          const on = href === page;
+          a.classList.toggle("active", on);
+          a.setAttribute("aria-selected", on ? "true" : "false");
+        });
+      })();
+    </script>
+  </body>
+</html>
