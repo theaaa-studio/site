@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/swarm.css?v=8" />
     <link rel="icon" type="image/x-icon" href="assets/imgs/theaaa2.ico" />
     <title>Abid Al Aqib (The AAA) | Game & XR Developer | Portfolio</title>
     <meta name="theme-color" content="#191c1a" />
@@ -75,6 +76,9 @@
         </a>
         <a href="#extra" role="tab">
           <i class="fas fa-plus-circle"></i>
+        </a>
+        <a href="#rebuild" class="rebuild-nav-btn" role="button" aria-label="Rebuild with Swarm" title="Rebuild page with Swarm (Alt+Shift+S)">
+          <i class="fas fa-wand-magic-sparkles"></i>
         </a>
       </div>
     </nav>
@@ -152,7 +156,7 @@
       }
 
       function initScrollTracking() {
-        const links = Array.from(document.querySelectorAll(".bottom-nav a"));
+        const links = Array.from(document.querySelectorAll(".bottom-nav a[role='tab']"));
         const sections = links
           .map((a) => document.querySelector(a.getAttribute("href")))
           .filter(Boolean);
@@ -183,15 +187,49 @@
       }
 
       // Start loading
-      window.addEventListener("DOMContentLoaded", loadSections);
+      window.addEventListener("DOMContentLoaded", async () => {
+        await loadSections();
+
+        // Wire Rebuild button in bottom nav
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".rebuild-nav-btn");
+          if (btn) {
+            e.preventDefault();
+            if (window.Swarm) {
+              window.Swarm.replay();
+            }
+            return;
+          }
+
+          // Wire bottom nav tabs to prioritize section rebuild
+          const navTab = e.target.closest(".bottom-nav a[role='tab']");
+          if (navTab) {
+            const targetId = navTab.getAttribute("href")?.replace("#", "");
+            if (targetId && window.Swarm && window.Swarm.triggerSectionById) {
+              window.Swarm.triggerSectionById(targetId);
+            }
+          }
+        });
+
+        // Initialize Scene-by-Scene Swarm Rebuild
+        const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!prefersReduced) {
+          setTimeout(() => {
+            if (window.Swarm) {
+              window.Swarm.init({ root: "main" });
+            }
+          }, 100);
+        }
+      });
 
       // Handle direct hash navigation on page load
       window.addEventListener("load", () => {
-        if (window.location.hash) {
+        if (window.location.hash && window.location.hash !== "#rebuild") {
           const target = document.querySelector(window.location.hash);
           if (target) target.scrollIntoView();
         }
       });
     </script>
+    <script src="assets/js/swarm.js?v=8"></script>
   </body>
 </html>

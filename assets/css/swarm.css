@@ -1,0 +1,315 @@
+/* Swarm Rebuild CSS */
+
+body.swarm-active main {
+  position: relative;
+  z-index: 1;
+}
+
+.swarm-root {
+  /* Prevent hover transforms or jitter while measuring/building */
+}
+
+.swarm-root * {
+  transition: none !important;
+}
+
+/* Individual pending elements */
+.swarm-pending {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Revealing animation */
+.swarm-revealing {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative;
+  z-index: 2;
+  animation: swarmFadeIn 0.35s ease forwards;
+}
+
+@keyframes swarmFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Blueprint Canvas: placed in background at z-index 0 */
+.swarm-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg, #f7f8fb);
+  background-image: radial-gradient(rgba(15, 23, 42, 0.16) 1.25px, transparent 1.25px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.swarm-canvas.is-leaving {
+  opacity: 0;
+}
+
+/* Floating Layer for cursors, dimension badges, SVG pens, typing carets */
+.swarm-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10000;
+  overflow: visible;
+}
+
+/* Cursors and Agents */
+.swarm-agent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10020;
+  will-change: transform;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: opacity 0.25s ease;
+}
+
+.swarm-agent svg {
+  display: block;
+}
+
+.swarm-tag {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font-size: 11px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.swarm-agent[data-tool="cross"]::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  top: 1px;
+  left: 1px;
+}
+
+/* Build Ghost Containers */
+.swarm-ghost {
+  position: absolute;
+  border: 1.5px dashed var(--c, #6d28d9);
+  pointer-events: none;
+  z-index: 10010;
+  box-sizing: border-box;
+  background: rgba(109, 40, 217, 0.05);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.25s ease;
+}
+
+.swarm-ghost.is-filled {
+  border-style: solid;
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+.swarm-ghost.is-image {
+  background: linear-gradient(135deg, rgba(109, 40, 217, 0.15) 0%, rgba(8, 145, 178, 0.15) 100%);
+  border: 2px solid var(--c, #6d28d9);
+}
+
+.swarm-badge {
+  position: absolute;
+  bottom: -22px;
+  right: 0;
+  font-size: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+/* Pen / Border SVG */
+.swarm-pen {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10012;
+  overflow: visible;
+  transition: opacity 0.25s ease;
+}
+
+.swarm-pen rect {
+  fill: none;
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+
+/* Text Typing Ghost: dark, crisp, and high-contrast */
+.swarm-text {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10014;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+  color: var(--text, #0f172a);
+  transition: opacity 0.25s ease;
+}
+
+.swarm-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.15em;
+  background: var(--c, currentColor);
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: swarmBlink 0.6s infinite;
+}
+
+@keyframes swarmBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Fade out helpers */
+.is-leaving {
+  opacity: 0 !important;
+  transition: opacity 0.35s ease !important;
+}
+
+/* Swarm Floating Controls Toolbar */
+.swarm-toolbar {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(17, 24, 39, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #f3f4f6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  z-index: 10030;
+  opacity: 0;
+  pointer-events: auto;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.swarm-toolbar.is-on {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.swarm-toolbar.is-leaving {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+}
+
+.swarm-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 999px;
+  box-shadow: 0 0 8px #10b981;
+  animation: swarmPulse 1.4s infinite ease-in-out;
+}
+
+@keyframes swarmPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.swarm-status {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.swarm-toolbar button {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.swarm-toolbar button:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.04);
+}
+
+.swarm-toolbar button:active {
+  transform: scale(0.96);
+}
+
+.swarm-toolbar button[data-act="live"] {
+  background: var(--brand, #6d28d9);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.swarm-toolbar button[data-act="live"]:hover {
+  background: #7c3aed;
+}
+
+/* Nav Rebuild Button Enhancement */
+.rebuild-nav-btn {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.rebuild-nav-btn i {
+  color: var(--brand-2, #0891b2);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+.rebuild-nav-btn:hover i {
+  color: var(--brand, #6d28d9);
+  transform: rotate(180deg) scale(1.15);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .swarm-agent,
+  .swarm-ghost,
+  .swarm-pen,
+  .swarm-text,
+  .swarm-canvas,
+  .swarm-toolbar {
+    display: none !important;
+  }
+  .swarm-pending {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
