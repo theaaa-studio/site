@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6d28d9" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#6d28d9" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="1" fill="#4b5563" fill-opacity="0.35" />
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="340" fill="url(#bg)" />
+  <rect width="600" height="340" fill="url(#glow)" />
+  <rect width="600" height="340" fill="url(#grid)" />
+
+  <!-- Blueprint Wireframe Box -->
+  <rect x="70" y="60" width="460" height="220" rx="12" fill="none" stroke="#6d28d9" stroke-width="2" stroke-dasharray="6 6" opacity="0.6" />
+  
+  <!-- Dimension Badge -->
+  <rect x="440" y="270" width="80" height="22" rx="4" fill="#6d28d9" />
+  <text x="480" y="285" fill="#ffffff" font-family="monospace" font-size="11" font-weight="700" text-anchor="middle">460 × 220</text>
+
+  <!-- Title & Subtitle -->
+  <text x="300" y="155" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="900" letter-spacing="1.5" text-anchor="middle">AAA SWARM</text>
+  <text x="300" y="190" fill="#a78bfa" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" letter-spacing="3" text-anchor="middle">MULTIPLAYER REBUILD ENGINE</text>
+
+  <!-- Cursor 1: Dev -->
+  <g transform="translate(100, 75)" filter="url(#shadow)">
+    <path d="M0 0 L18 8 L10.5 10.5 L8 18 Z" fill="#0891b2" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" />
+    <rect x="14" y="12" width="38" height="18" rx="4" fill="#0891b2" />
+    <text x="33" y="25" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Dev</text>
+  </g>
+
+  <!-- Cursor 2: Designer -->
+  <g transform="translate(460, 95)" filter="url(#shadow)">
+    <path d="M0 0 L18 8 L10.5 10.5 L8 18 Z" fill="#6d28d9" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" />
+    <rect x="14" y="12" width="60" height="18" rx="4" fill="#6d28d9" />
+    <text x="44" y="25" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Designer</text>
+  </g>
+
+  <!-- Cursor 3: AAA -->
+  <g transform="translate(180, 235)" filter="url(#shadow)">
+    <path d="M0 0 L18 8 L10.5 10.5 L8 18 Z" fill="#e11d48" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" />
+    <rect x="14" y="12" width="38" height="18" rx="4" fill="#e11d48" />
+    <text x="33" y="25" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">AAA</text>
+  </g>
+
+  <!-- Cursor 4: Artist -->
+  <g transform="translate(410, 215)" filter="url(#shadow)">
+    <path d="M0 0 L18 8 L10.5 10.5 L8 18 Z" fill="#16a34a" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" />
+    <rect x="14" y="12" width="46" height="18" rx="4" fill="#16a34a" />
+    <text x="37" y="25" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Artist</text>
+  </g>
+</svg>
